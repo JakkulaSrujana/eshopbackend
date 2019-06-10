@@ -12,6 +12,8 @@ public  class A {
 	{
 		System.out.print("Am2");
 	}
+	
+	int x;
 }
 
 

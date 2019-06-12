@@ -9,12 +9,16 @@ public interface CatagoryDao {
 	
 
 	    boolean saveCategory(Catagory category);
-	    
+	    boolean editCategory(Catagory category);
 	    boolean deleteCategory(Catagory category);
 	    
 	    Catagory getCategory(int categoryId);
 	    
 	    List<Catagory>    getCategoryList();
+	    
+	   
+
+	        
 	    
 	
 }

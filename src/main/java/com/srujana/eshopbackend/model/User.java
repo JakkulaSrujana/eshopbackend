@@ -1,7 +1,9 @@
 package com.srujana.eshopbackend.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 @Entity
 public class User {
 
@@ -29,12 +31,7 @@ public class User {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	
 	public String getRole() {
 		return role;
 	}
@@ -52,7 +49,15 @@ public class User {
     private String password;
     private String userName;
     private String mobile;
-    private String address;
+   
     private String role;
     private boolean enabled;
+    @ManyToOne(cascade=CascadeType.ALL)
+    private ShippingAdress shippingAdress;
+	public ShippingAdress getShippingAdress() {
+		return shippingAdress;
+	}
+	public void setShippingAdress(ShippingAdress shippingAdress) {
+		this.shippingAdress = shippingAdress;
+	}
 }

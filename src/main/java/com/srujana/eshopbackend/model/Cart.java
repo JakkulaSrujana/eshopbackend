@@ -1,6 +1,8 @@
 package com.srujana.eshopbackend.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
@@ -8,6 +10,7 @@ import javax.persistence.Table;
 public class Cart {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int cartId;
 	private int productId;
 	private String productName;
@@ -15,6 +18,9 @@ public class Cart {
 	private String productSupplier;
 	private int quantity;
 	private int totalPrice;
+	
+	
+	
 	private String userName;
 	public String getUserName() {
 		return userName;

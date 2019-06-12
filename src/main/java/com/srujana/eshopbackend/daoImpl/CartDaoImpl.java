@@ -43,11 +43,11 @@ public class CartDaoImpl implements CartDao{
 		Session session= sessionFactory.openSession();
 		try
 		{
-			if(cart.getCartId()==0) 
+			/*if(cart.getCartId()==0) 
 			{
 				int id	=(int)(Math.random()*10000);
 				cart.setCartId(id);
-			}
+			}*/
 			
 			
 			

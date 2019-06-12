@@ -26,7 +26,7 @@ public class ProductDaoImpl implements ProductDao{
 		
 		
 		try {
-			session.saveOrUpdate(product);
+			session.save(product);
 			Transaction transaction=session.beginTransaction();
 			transaction.commit();
 			return true;
@@ -104,6 +104,30 @@ public class ProductDaoImpl implements ProductDao{
 		{
 			session.close();
 		}
+	}
+
+	@Override
+	public boolean editProduct(Product product) {
+Session session=sessionFactory.openSession();
+		
+		
+		
+		try {
+			session.update(product);
+			Transaction transaction=session.beginTransaction();
+			transaction.commit();
+			return true;
+		}
+		catch(Exception e)
+		{
+		
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+		session.close();
+		}
+		
 	}
 
 	

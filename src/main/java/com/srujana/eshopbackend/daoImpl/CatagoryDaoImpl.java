@@ -25,15 +25,15 @@ public class CatagoryDaoImpl implements CatagoryDao{
 	public boolean saveCategory(Catagory category) {
 		System.out.println(sessionFactory);
 		Session session=sessionFactory.openSession();
-		if(category.getCatagoryId()==0)
+		/*if(category.getCatagoryId()==0)
 		{
 			int catagoryId	=(int)(Math.random()*10000);
 			category.setCatagoryId(catagoryId);
-		}
+		}*/
 		
 		
 		try {
-			session.saveOrUpdate(category);
+			session.save(category);
 			Transaction transaction=session.beginTransaction();
 			transaction.commit();
 			return true;
@@ -113,6 +113,34 @@ public class CatagoryDaoImpl implements CatagoryDao{
 		{
 			session.close();
 		}
+	}
+
+	@Override
+	public boolean editCategory(Catagory category) {
+		Session session=sessionFactory.openSession();
+		/*if(category.getCatagoryId()==0)
+		{
+			int catagoryId	=(int)(Math.random()*10000);
+			category.setCatagoryId(catagoryId);
+		}*/
+		
+		
+		try {
+			session.update(category);
+			Transaction transaction=session.beginTransaction();
+			transaction.commit();
+			return true;
+		}
+		catch(Exception e)
+		{
+		
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+		session.close();
+		}
+		
 	}
 
 	

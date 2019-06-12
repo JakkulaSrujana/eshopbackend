@@ -1,6 +1,8 @@
 package com.srujana.eshopbackend.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
@@ -9,12 +11,20 @@ import org.springframework.web.multipart.MultipartFile;
 @Entity(name="ProductTable")
 public class Product {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int productId;
 	private String productName;
 	private String productDescription;
 	private int productPrice;
 	private String productCatagory;
 	private String productSupplier;
+	private int quantity;
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	@Transient
 	private MultipartFile proImage;
 	public MultipartFile getProImage() {

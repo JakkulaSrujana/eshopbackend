@@ -25,10 +25,11 @@ public class CartDaoImpl implements CartDao{
 
 	@Autowired
 	SessionFactory sessionFactory;
+
 	@Override
 	public boolean saveCart(Product product, int quantity,String uname) {
 			Cart cart=new Cart();
-	
+			Session session= sessionFactory.openSession();
 		
 		cart.setProductId(product.getProductId());
 		cart.setProductName(product.getProductName());
@@ -40,7 +41,7 @@ public class CartDaoImpl implements CartDao{
 		cart.setTotalPrice((product.getProductPrice())*(cart.getQuantity()));
 		cart.setUserName(uname);
 		
-		Session session= sessionFactory.openSession();
+		
 		try
 		{
 			/*if(cart.getCartId()==0) 
@@ -143,5 +144,48 @@ Session session=sessionFactory.openSession();
 			session.close();
 		}
 	}
+	
+	/*public boolean editCart(Product product, int quantity,String uname,Cart cart) {
+		//Cart cart=new Cart();
+
+	
+	cart.setProductId(product.getProductId());
+	cart.setProductName(product.getProductName());
+	cart.setProductPrice(product.getProductPrice());
+
+	cart.setProductSupplier(product.getProductSupplier());
+	cart.setQuantity(quantity);
+
+	cart.setTotalPrice((product.getProductPrice())*(cart.getQuantity()));
+	cart.setUserName(uname);
+	
+	Session session= sessionFactory.openSession();
+	try
+	{*/
+		/*if(cart.getCartId()==0) 
+		{
+			int id	=(int)(Math.random()*10000);
+			cart.setCartId(id);
+		}*/
+		
+		
+		
+		/*session.update(cart);
+		Transaction t=session.beginTransaction();
+		t.commit();
+		return true;
+	}
+	catch(Exception e)
+	{
+	
+		e.printStackTrace();
+		return false;
+	}
+	finally {
+	session.close();
+	}
+	
+}*/
+	 
 
 }

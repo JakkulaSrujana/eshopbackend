@@ -26,7 +26,7 @@ public class CartDaoImpl implements CartDao{
 	@Autowired
 	SessionFactory sessionFactory;
 
-	@Override
+	/*@Override
 	public boolean saveCart(Product product, int quantity,String uname) {
 			Cart cart=new Cart();
 			Session session= sessionFactory.openSession();
@@ -42,8 +42,8 @@ public class CartDaoImpl implements CartDao{
 		cart.setUserName(uname);
 		
 		
-		try
-		{
+		try*/
+		//{
 			/*if(cart.getCartId()==0) 
 			{
 				int id	=(int)(Math.random()*10000);
@@ -52,7 +52,7 @@ public class CartDaoImpl implements CartDao{
 			
 			
 			
-			session.saveOrUpdate(cart);
+			/*session.saveOrUpdate(cart);
 			Transaction t=session.beginTransaction();
 			t.commit();
 			return true;
@@ -67,7 +67,7 @@ public class CartDaoImpl implements CartDao{
 		session.close();
 		}
 		
-	}
+	}*/
 	
 
 	@Override
@@ -144,48 +144,75 @@ Session session=sessionFactory.openSession();
 			session.close();
 		}
 	}
-	
-	/*public boolean editCart(Product product, int quantity,String uname,Cart cart) {
-		//Cart cart=new Cart();
 
-	
-	cart.setProductId(product.getProductId());
-	cart.setProductName(product.getProductName());
-	cart.setProductPrice(product.getProductPrice());
 
-	cart.setProductSupplier(product.getProductSupplier());
-	cart.setQuantity(quantity);
-
-	cart.setTotalPrice((product.getProductPrice())*(cart.getQuantity()));
-	cart.setUserName(uname);
-	
-	Session session= sessionFactory.openSession();
-	try
-	{*/
-		/*if(cart.getCartId()==0) 
+	@Override
+	public boolean saveCart(Cart cart) {
+		
+		Session session= sessionFactory.openSession();
+		
+		
+		
+		try
 		{
-			int id	=(int)(Math.random()*10000);
-			cart.setCartId(id);
-		}*/
+			/*if(cart.getCartId()==0) 
+			{
+				int id	=(int)(Math.random()*10000);
+				cart.setCartId(id);
+			}*/
+			
+			
+			
+			session.save(cart);
+			Transaction t=session.beginTransaction();
+			t.commit();
+			return true;
+		}
+		catch(Exception e)
+		{
 		
-		
-		
-		/*session.update(cart);
-		Transaction t=session.beginTransaction();
-		t.commit();
-		return true;
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+		session.close();
+		}
 	}
-	catch(Exception e)
-	{
+
+
+	@Override
+	public boolean editCart(Cart cart) {
+Session session= sessionFactory.openSession();
+		
+		
+		
+		try
+		{
+			/*if(cart.getCartId()==0) 
+			{
+				int id	=(int)(Math.random()*10000);
+				cart.setCartId(id);
+			}*/
+			
+			
+			
+			session.update(cart);
+			Transaction t=session.beginTransaction();
+			t.commit();
+			return true;
+		}
+		catch(Exception e)
+		{
+		
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+		session.close();
+		}
+	}
 	
-		e.printStackTrace();
-		return false;
-	}
-	finally {
-	session.close();
-	}
 	
-}*/
 	 
 
 }
